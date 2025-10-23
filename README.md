@@ -1,5 +1,5 @@
 # Descripción del laboratorio
-Creación de servidor con y sin hilos para evidenciar la diferencia de conexiones que puede manejar y como puede escalar un servidor de forma horizontal, sumado a la creación de un microservicio para verificar NRCs para observar como se puede distribuir responsabilidades en diversos nodos de la aplicación.
+Creación de servidor con y sin hilos para evidenciar la diferencia de conexiones que puede manejar y como puede escalar un servidor de forma horizontal, sumado a la creación de un microservicio para validación de NRCs.
 
 # Integrantes del grupo
 - Rubén Benavides 
@@ -7,59 +7,77 @@ Creación de servidor con y sin hilos para evidenciar la diferencia de conexione
 - Edison Verdesoto 
 
 ## Servidor sin hilos
-Servidor en Python utilizando sockets que permite el registro, actualización, listado y eliminación de calificaciones recibiendo comandos con el formato de ACCION|JSON_Informacion que persiste la información usada en un archivo 'calificaciones.csv'
+Servidor en Python utilizando sockets que permite el registro, actualización, listado y eliminación de calificaciones recibiendo comandos con el formato de `ACCION|JSON_Informacion` que persiste la información en un archivo CSV.
 
 ## Servidor con hilos
-Igual que el servidor sin hilos pero aprovechando la concurrencia con los hilos del paquete threading y que verifica si los registros y actualizaciones se hacen a NRCs válidos conectandose y llamando a la función de otro servidor.
+Igual que el servidor sin hilos pero aprovechando la concurrencia con los hilos del paquete `threading` y que verifica si los registros y actualizaciones se hacen a NRCs válidos conectándose y llamando al microservicio de validación.
 
 ## Cliente
 Cliente en Python que a través de sockets y una interfaz de línea de comandos envía los comandos formateados al servidor con la acción y el JSON con la información a utilizar.
 
 # Estructura de directorios
 
+```
 laboratorio2/
-
 │
-
 ├── con_hilos/
-
 │   ├── calificaciones.csv
-
 │   ├── client.py
-
 │   └── server.py
-
+│
 ├── sin_hilos/
-
 │   ├── calificaciones.csv
-
 │   ├── client.py
-
 │   └── server.py
-
+│
 ├── nrcs_server.py
-
 └── nrcs.csv
+```
 
 # Instrucciones de ejecución
 
 ## Para el servidor sin hilos
 
-1. En la terminal acceder a la carpeta sin_hilos
-2. Ejecutar el servidor con python server.py
-3. Probar las funcionalidades ejecutando el cliente con python client.py
+1. En la terminal acceder a la carpeta `sin_hilos`:
+   ```bash
+   cd sin_hilos
+   ```
+
+2. Ejecutar el servidor:
+   ```bash
+   python server.py
+   ```
+
+3. Probar las funcionalidades ejecutando el cliente:
+   ```bash
+   python client.py
+   ```
 
 ## Para el servidor con hilos
 
-Desde la raíz del proyecto
+Desde la raíz del proyecto:
 
-1. Crear y/o modificar el archivo de nrcs.csv con las materias que serán válidas para el sistema.
+1. Crear y/o modificar el archivo `nrcs.csv` con las materias que serán válidas para el sistema.
 
-2. Ejecutar primero el servidor con el servicio de verificación de NRCs con python nrcs_server.py
+2. Ejecutar primero el servidor con el servicio de verificación de NRCs:
+   ```bash
+   python nrcs_server.py
+   ```
 
-3. En la terminal acceder a la carpeta con_hilos
-4. Ejecutar el servidor con python server.py
-5. Probar las funcionalidades ejecutando el cliente con python client.py
+3. En una nueva terminal, acceder a la carpeta `con_hilos`:
+   ```bash
+   cd con_hilos
+   ```
+
+4. Ejecutar el servidor:
+   ```bash
+   python server.py
+   ```
+
+5. En otra terminal, probar las funcionalidades ejecutando el cliente:
+   ```bash
+   python client.py
+   ```
 
 # Ejemplos de uso
 
