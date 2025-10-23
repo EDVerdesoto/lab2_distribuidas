@@ -12,6 +12,9 @@ Servidor en Python utilizando sockets que permite el registro, actualización, l
 ## Servidor con hilos
 Igual que el servidor sin hilos pero aprovechando la concurrencia con los hilos del paquete `threading` y que verifica si los registros y actualizaciones se hacen a NRCs válidos conectándose y llamando al microservicio de validación.
 
+## Servidor con el servicio de NRCs
+Servidor en Python sin hilos que utilizando sockets da un solo servicio: verificar las Materias válidas antes de registrar una calificación.
+
 ## Cliente
 Cliente en Python que a través de sockets y una interfaz de línea de comandos envía los comandos formateados al servidor con la acción y el JSON con la información a utilizar.
 
@@ -104,3 +107,9 @@ Desde la raíz del proyecto:
 
 ## Listado de las calificaciones registradas en los múltiples clientes igual al archivo
 <img width="1473" height="830" alt="image" src="https://github.com/user-attachments/assets/bac41a0b-b687-4cb3-a53e-fcf41b7deb7f" />
+
+
+# Limitaciones del enfoque
+- El servidor "mejorado" con_hilos introduce un nuevo cuello de botella por el uso del servidor que verifica los NRCs. Depende del nrcs_server.py, que es un servidor sin hilos. Si 10 hilos del servidor principal intentan validar un NRC simultáneamente, tendrán que hacer fila para ser atendidos uno por uno por el microservicio de NRCs, eliminando gran parte de la ventaja de concurrencia.
+- Escalabilidad Vertical Limitada: El enfoque de hilos solo permite escalar verticalmente (usar más recursos en la misma máquina). Crear miles de hilos es ineficiente debido a la sobrecarga del sistema operativo por el cambio de contexto. Este modelo no escala horizontalmente (distribuir la carga entre múltiples máquinas).
+- Condiciones de Carrera: Esta es la limitación más grave del servidor con_hilos. Múltiples hilos intentarán leer y escribir en el mismo archivo calificaciones.csv simultáneamente. Sin un mecanismo de sincronización explícito (como threading.Lock para proteger el acceso al archivo), esto inevitablemente llevará a condiciones de carrera y corrupción de datos, perdiendo la Integridad de los datos.
