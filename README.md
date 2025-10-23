@@ -18,15 +18,25 @@ Cliente en Python que a través de sockets y una interfaz de línea de comandos 
 # Estructura de directorios
 
 laboratorio2/
+│
 ├── con_hilos/
+│   │
 │   ├── calificaciones.csv
+│   │
 │   ├── client.py
+│   │
 │   └── server.py
+│
 ├── sin_hilos/
+│   │
 │   ├── calificaciones.csv
+│   │
 │   ├── client.py
+│   │
 │   └── server.py
+│
 ├── nrcs_server.py
+│
 └── nrcs.csv
 
 # Instrucciones de ejecución
