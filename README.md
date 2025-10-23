@@ -18,25 +18,15 @@ Cliente en Python que a través de sockets y una interfaz de línea de comandos 
 # Estructura de directorios
 
 laboratorio2/
-
 ├── con_hilos/
-
 │   ├── calificaciones.csv
-
 │   ├── client.py
-
 │   └── server.py
-
 ├── sin_hilos/
-
 │   ├── calificaciones.csv
-
 │   ├── client.py
-
 │   └── server.py
-
 ├── nrcs_server.py
-
 └── nrcs.csv
 
 # Instrucciones de ejecución
@@ -62,22 +52,25 @@ Desde la raíz del proyecto
 # Ejemplos de uso
 
 ## Registro de una calificación en el servidor sin hilos
+<img width="1473" height="592" alt="image" src="https://github.com/user-attachments/assets/9cd86996-4167-4b3e-b0e0-0bb9105fb48d" />
 
-## Archivo modificado al asignar una calificación en el servidor 
+## Archivo modificado al actualizar una calificación en el servidor 
+<img width="1473" height="823" alt="image" src="https://github.com/user-attachments/assets/6bd63851-0ac1-4e2e-af20-5cbf4339a1e8" />
 
 ## Listado de las calificaciones igual al archivo
-
-## Bloqueo y espera de los clientes con el servidor sin hilos con múltiples clientes
-
-## Múltiples conexiones abiertas en el servidor con hilos
-
-## Registro de una calificación en el servidor con hilos con un NRC inválido
+<img width="1473" height="830" alt="image" src="https://github.com/user-attachments/assets/6e706adb-d65a-4b80-b4e1-991d169cbeae" />
 
 ## Registro de una calificación en el servidor con hilos con un NRC válido
+<img width="1473" height="830" alt="image" src="https://github.com/user-attachments/assets/5f0e654d-54e9-4133-8510-16d8f047b4cd" />
 
-## Actualización de una calificación con una Materia/NRC inválido
+## Registro de una calificación en el servidor con hilos con un NRC inválido
+<img width="1473" height="869" alt="image" src="https://github.com/user-attachments/assets/fc808e3c-b19f-4579-9da3-b0631d703790" />
 
 ## Actualización de una calificación con un NRC válido
+<img width="1473" height="830" alt="image" src="https://github.com/user-attachments/assets/4744ef44-926a-457a-9f5d-dba74dfe5435" />
+
+## Actualización de una calificación con una Materia/NRC inválido
+<img width="1473" height="830" alt="image" src="https://github.com/user-attachments/assets/8656739b-7f17-4453-922b-478a7a719078" />
 
 ## Listado de las calificaciones registradas en los múltiples clientes igual al archivo
-
+<img width="1473" height="830" alt="image" src="https://github.com/user-attachments/assets/bac41a0b-b687-4cb3-a53e-fcf41b7deb7f" />
